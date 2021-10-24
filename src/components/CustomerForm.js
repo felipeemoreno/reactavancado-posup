@@ -36,7 +36,7 @@ const CustomerForm = () => {
   });
 
   return (
-    <div class="form">
+    <div className="form">
       <h3>Customer Form</h3>
         <Formik
           initialValues={{
@@ -51,12 +51,14 @@ const CustomerForm = () => {
           validationSchema={SignupSchema}
           onSubmit={(values) => {
             alert("Dados Enviados");
+            console.log(values);
           }}
+
         >
           {({ values, errors, touched, handleChange, handleBlur }) => (
             <>
               <Form>
-                <div class="form-group">
+                <div className="form-group">
                   <label>Nome: </label>
                   <Field type="text"
                   name="firstName"
@@ -65,27 +67,27 @@ const CustomerForm = () => {
                   />
                   <span>{touched.firstName && errors.firstName}</span>
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                   <label>Sobenome: </label>
                   <Field type="text" name="lastName" />
                   <span>{touched.lastName && errors.lastName}</span>
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                   <label>Cpf: </label>
                   <Field type="text" name="cpf" />
                   <span>{touched.cpf && errors.cpf}</span>
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                   <label>E-mail: </label>
                   <Field type="email" name="email" />
                   <span>{touched.email && errors.email}</span>
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                   <label>Data nascimento: </label>
                   <Field type="date" name="birthdate" />
                   <span>{touched.birthdate && errors.birthdate}</span>
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                   <label>Gênero: </label>
                   <Field as="select"
                   name="genre"
@@ -99,13 +101,13 @@ const CustomerForm = () => {
                   </Field>
                   <span>{touched.genre && errors.genre}</span>
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                   <label>Celular</label>
                   <Field
                   type="text" name="cellphone" />
                   <span>{touched.cellphone && errors.cellphone}</span>
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                   <input type="submit" value="Enviar" />
                 </div>
             </Form>
