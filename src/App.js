@@ -1,5 +1,5 @@
 import './App.css';
-import CustomerForm from './components/CustomerForm';
+
 import AppHeader from './components/AppHeader';
 import Container from '@mui/material/Container';
 
