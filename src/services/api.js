@@ -11,3 +11,11 @@ export async function createMovie(data) {
 
   return response;
 }
+
+
+export async function getMovies(data) {
+  const response = await api.get('/movies', data);
+  // console.log("Movie Created", response.json);
+
+  return response;
+}
