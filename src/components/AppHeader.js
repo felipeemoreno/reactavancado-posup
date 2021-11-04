@@ -7,14 +7,13 @@ function AppHeader() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Container component="nav">
-          <Toolbar disableGutters>
+          <Toolbar disableGuttersgit>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               Movies
             </Typography>
 
             <Button color="inherit" component={ Link } to="/" >Home</Button>
             <Button color="inherit" component={ Link } to="/create" >Cadastrar Filme</Button>
-            <Button color="inherit">Login</Button>
           </Toolbar>
         </Container>
       </AppBar>

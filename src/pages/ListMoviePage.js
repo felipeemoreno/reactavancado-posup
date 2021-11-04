@@ -23,6 +23,7 @@ const ListMoviePage = () => {
 
   useEffect(() => {
     getMoviesFromApi();
+    document.title = "Listar";
   },[]);
 
 
