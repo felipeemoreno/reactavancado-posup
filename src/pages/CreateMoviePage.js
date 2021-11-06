@@ -1,5 +1,6 @@
 import { useState, setState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import { Box, Typography, TextField, Grid, Button } from '@mui/material';
 import Container from '@mui/material/Container';
@@ -19,6 +20,7 @@ function CreateMoviePage() {
 
   const [ fields, setFields ] = useState(movie);
   const location = useLocation();
+  const history = useHistory();
 
   useEffect(() => {
     console.log(location);
@@ -38,6 +40,7 @@ function CreateMoviePage() {
 
     if(response.status === 200 ) {
       setFields(movie);
+      history.push("/");
     }
   }
 
