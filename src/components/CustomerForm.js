@@ -51,7 +51,6 @@ const CustomerForm = () => {
           validationSchema={SignupSchema}
           onSubmit={(values) => {
             alert("Dados Enviados");
-            console.log(values);
           }}
 
         >

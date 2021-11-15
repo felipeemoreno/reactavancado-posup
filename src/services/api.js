@@ -14,15 +14,17 @@ api.interceptors.request.use((config) => {
 
 export async function createMovie(data) {
   const response = await api.post('/movies', data);
-  console.log("Movie Created", response.json);
 
   return response;
 }
 
+export async function deleteMovie(id) {
+  const response = await api.delete(`/movies/${id}`);
+  return response;
+}
 
 export async function getMovies(data) {
   const response = await api.get('/movies', data);
-  console.log("Get Movies", response);
 
   return response;
 }
@@ -34,6 +36,5 @@ export async function authenticate(login, password) {
     password,
   });
 
-  console.log('Login');
   return response;
 }

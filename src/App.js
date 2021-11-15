@@ -11,7 +11,6 @@ import LoginPage from './pages/LoginPage';
 import { AuthContext } from './context/authContext';
 
 function App() {
-
   const context = useContext(AuthContext);
 
   return (

@@ -30,7 +30,6 @@ const LoginPage = () => {
     event.preventDefault();
 
     if(await context.login(fields.login, fields.password)) {
-      console.log("login"); // inser redirect history.push
       history.push("/");
     }
   }

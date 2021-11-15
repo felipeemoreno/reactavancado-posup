@@ -1,5 +1,4 @@
-import { useState, setState, useEffect } from 'react'
-import { useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom';
 
 import { Box, Typography, TextField, Grid, Button } from '@mui/material';
@@ -19,11 +18,9 @@ function CreateMoviePage() {
   }
 
   const [ fields, setFields ] = useState(movie);
-  const location = useLocation();
   const history = useHistory();
 
   useEffect(() => {
-    console.log(location);
     document.title = "Cadastrar";
   }, []);
 
@@ -35,7 +32,6 @@ function CreateMoviePage() {
 
   async function handleSubmit (event) {
     event.preventDefault();
-    console.log(fields);
     const response = await createMovie(fields);
 
     if(response.status === 200 ) {
