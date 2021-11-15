@@ -1,10 +1,6 @@
 function isAuthenticated () {
-
-  const token = localStorage.getItem('token');
-
-  return (!token) ? false : true;
+  return localStorage.getItem('token') !== null;
 }
-
 
 function login(token) {
   localStorage.setItem('token', token);

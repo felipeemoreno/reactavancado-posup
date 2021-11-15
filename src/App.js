@@ -1,20 +1,23 @@
 import './App.css';
 
+import { useContext } from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
-
-import { isAuthenticated } from './services/auth';
 
 import AppHeader from './components/AppHeader';
 import CreateMoviePage from './pages/CreateMoviePage';
 import ListMoviePage from './pages/ListMoviePage';
 import UpdateMoviePage from './pages/UpdateMoviePage';
 import LoginPage from './pages/LoginPage';
+import { AuthContext } from './context/authContext';
 
 function App() {
+
+  const context = useContext(AuthContext);
+
   return (
   <>
     <BrowserRouter>
-    { isAuthenticated() ? <AppHeader /> : null }
+    { context.isAuthenticated ? <AppHeader /> : null }
       <Switch>
         <PrivateRoute exact path="/">
           <ListMoviePage />
@@ -38,9 +41,11 @@ function App() {
 }
 
 const PrivateRoute = ({ children, ...rest }) => {
+  const context = useContext(AuthContext);
+
   return(
     <Route {...rest } >
-      { isAuthenticated() ? children : <Redirect to="/login" /> }
+      { context.isAuthenticated ? children : <Redirect to="/login" /> }
     </Route>
   )
 }

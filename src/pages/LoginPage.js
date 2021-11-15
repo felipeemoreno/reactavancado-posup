@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField'
@@ -7,8 +7,7 @@ import Typography from '@mui/material/Typography';
 
 import { useHistory } from 'react-router-dom';
 
-import { authenticate } from '../services/api';
-import { login, isAuthenticated } from '../services/auth';
+import { AuthContext } from '../context/authContext';
 
 const LoginPage = () => {
 
@@ -16,7 +15,7 @@ const LoginPage = () => {
   const history = useHistory();
 
   useEffect(() => {
-    if(isAuthenticated()) {
+    if(context.isAuthenticated) {
       history.push("/");
     }
   }, []);
@@ -29,16 +28,17 @@ const LoginPage = () => {
 
   const handleSubmit = async event => {
     event.preventDefault();
-    const response = await authenticate(fields.login, fields.password);
 
-    if( response.status === 200 && response.data.auth === true ) {
-      login(response.data.token);
+    if(await context.login(fields.login, fields.password)) {
+      console.log("login"); // inser redirect history.push
       history.push("/");
     }
-
   }
 
+  const context = useContext(AuthContext);
+
   return (
+
     <Container maxWidth="xs" sx={{ display: "flex", flexDirection: "column", alignItems: "center"}}>
       <Typography variant="h5" sx={{ mt: 5 }}>
         Entrar

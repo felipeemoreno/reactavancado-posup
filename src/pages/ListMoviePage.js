@@ -33,7 +33,7 @@ const ListMoviePage = () => {
       movie.id = movie.movieId;
       return movie;
     })
-
+    console.log(data);
     setRows(data);
   }
   return (
