@@ -39,7 +39,10 @@ const ListMoviePage = () => {
   }
 
   const handleClickDelete = async (event) => {
-    await deleteMovie(rowsSelected[0]);
+    const promises = rowsSelected.map( async (row, idx) => await deleteMovie(row));
+
+    await Promise.all(promises);
+
     getMoviesFromApi();
   }
 
